@@ -119,4 +119,12 @@ class Enigma
     decrypted_letters.join
   end
 
+  def decryption_hash_creation(message)
+    decryption_hash = {}
+    decryption_hash[:decryption] = find_decrypted_letters(message)
+    decryption_hash[:key] = @key
+    decryption_hash[:date] = @date
+    decryption_hash
+  end
+
 end
