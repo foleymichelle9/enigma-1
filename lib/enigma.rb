@@ -29,4 +29,18 @@ class Enigma
     keys
   end
 
+  def find_offsets
+  @date = Date.today.strftime('%d%m%y') if @date.nil?
+    date_squared = @date.to_i * @date.to_i
+    last_four = date_squared.to_s[-4..-1]
+    last_four = last_four
+
+    offsets = {}
+    offsets[:a_offset] = last_four[0].to_i
+    offsets[:b_offset] = last_four[1].to_i
+    offsets[:c_offset] = last_four[2].to_i
+    offsets[:d_offset] = last_four[3].to_i
+    offsets
+  end
+
 end
