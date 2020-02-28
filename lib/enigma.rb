@@ -92,4 +92,13 @@ class Enigma
      end
   end
 
+  def find_encryted_letters(message)
+    letters = []
+
+    indices_in_alphabet_array(message).each do |index|
+      letters << alphabet[index]
+    end
+    letters.join
+  end
+
 end
