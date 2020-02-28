@@ -160,4 +160,11 @@ class EnigmaTest < Minitest::Test
 
     assert_equal expected, @enigma.encrypt("hello world")
   end
+
+  def test_it_can_find_decrypted_letters
+    Date.stubs(:today).returns(Date.new(1995, 8, 4))
+    @enigma.stubs(:generate_random_key).returns("02715")
+
+    assert_equal "hello world", @enigma.find_decrypted_letters("keder ohulw")
+  end
 end
