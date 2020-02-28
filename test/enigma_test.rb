@@ -114,4 +114,16 @@ class EnigmaTest < Minitest::Test
 
     assert_equal "keder ohulw", @enigma.find_encryted_letters("hello world")
   end
+
+  def test_it_can_create_encryption_hash_creation
+    Date.stubs(:today).returns(Date.new(1995, 8, 4))
+    @enigma.stubs(:generate_random_key).returns("02715")
+    expected = {
+      :encryption=>"keder ohulw",
+      :key=>"02715",
+      :date=>"040895"
+    }
+
+    assert_equal expected, @enigma.encryption_hash_creation("hello world")
+  end
 end
