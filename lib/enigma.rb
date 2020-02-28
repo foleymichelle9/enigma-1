@@ -52,4 +52,18 @@ class Enigma
     shifts
   end
 
+  def find_message_indices(message)
+    characters = message.split('')
+
+    indices = []
+    characters.each do |character|
+      alphabet.each do |letter|
+        if character == letter
+          indices << alphabet.index(letter)
+        end
+      end
+    end
+    indices
+  end
+
 end

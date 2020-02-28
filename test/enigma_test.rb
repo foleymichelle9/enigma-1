@@ -81,4 +81,9 @@ class EnigmaTest < Minitest::Test
 
     assert_equal expected, @enigma.find_shifts
   end
+
+  def test_it_can_find_message_indices
+    assert_equal [7, 4, 11, 11, 14, 26, 22, 14, 17, 11, 3], @enigma.find_message_indices("hello world")
+    assert_equal [10, 4, 3, 4, 17, 26, 14, 7, 20, 11, 22], @enigma.find_message_indices("keder ohulw")
+  end
 end
