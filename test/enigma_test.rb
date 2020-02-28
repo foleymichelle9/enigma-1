@@ -99,4 +99,12 @@ class EnigmaTest < Minitest::Test
     assert_equal [10, 31, 84, 31, 17, 53, 95, 34, 20, 38, 76], @enigma.add_shift_to_indices("hello world")
     assert_equal [13, 31, 76, 24, 20, 53, 87, 27, 23, 38, 95], @enigma.add_shift_to_indices("keder ohulw")
   end
+
+  def test_it_can_find_indices_in_alphabet_array_range
+    Date.stubs(:today).returns(Date.new(1995, 8, 4))
+    @enigma.stubs(:generate_random_key).returns("02715")
+
+    assert_equal [10, 4, 3, 4, 17, 26, 14, 7, 20, 11, 22], @enigma.indices_in_alphabet_array("hello world")
+    assert_equal [13, 4, 22, 24, 20, 26, 6, 0, 23, 11, 14], @enigma.indices_in_alphabet_array("keder ohulw")
+  end
 end
