@@ -6,6 +6,7 @@ class Enigma
   @message = message
   @key = key
   @date = date
+  encryption_hash_creation(@message)
   end
 
   def alphabet
