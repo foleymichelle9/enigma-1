@@ -43,4 +43,13 @@ class Enigma
     offsets
   end
 
+  def find_shifts
+    shifts = {}
+    shifts[:a_shift] = find_offsets[:a_offset] + find_keys[:a_key]
+    shifts[:b_shift] = find_offsets[:b_offset] + find_keys[:b_key]
+    shifts[:c_shift] = find_offsets[:c_offset] + find_keys[:c_key]
+    shifts[:d_shift] = find_offsets[:d_offset] + find_keys[:d_key]
+    shifts
+  end
+
 end
