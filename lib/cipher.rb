@@ -47,4 +47,18 @@ class Cipher
     shifts[:d_shift] = find_offsets[:d_offset] + find_keys[:d_key]
     shifts
   end
+
+  def find_message_indices(message)
+    characters = message.downcase.split('')
+
+    indices = []
+    characters.each do |character|
+      alphabet.each do |letter|
+        if character == letter
+          indices << alphabet.index(letter)
+        end
+      end
+    end
+    indices
+  end
 end
