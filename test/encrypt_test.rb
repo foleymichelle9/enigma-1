@@ -45,4 +45,16 @@ class EncryptTest < Minitest::Test
 
     assert_equal expected, @encrypt.alphabet
   end
+
+  def test_it_can_find_keys
+    @encrypt.stubs(:generate_random_key).returns("02715")
+    expected = {
+      :a_key=>2,
+      :b_key=>27,
+      :c_key=>71,
+      :d_key=>15
+    }
+
+    assert_equal expected, @encrypt.find_keys
+  end
 end
