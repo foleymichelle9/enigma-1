@@ -112,4 +112,12 @@ class DecryptTest < Minitest::Test
     assert_equal expected, @decrypt.decryption_indices_in_alphabet_array("keder ohulw")
     assert_equal expected, @decrypt.decryption_indices_in_alphabet_array("KEDER OHULW")
   end
+
+  def test_it_can_find_decrypted_letters
+    Date.stubs(:today).returns(Date.new(1995, 8, 4))
+    @decrypt.stubs(:generate_random_key).returns("02715")
+
+    assert_equal "hello world", @decrypt.find_decrypted_letters("keder ohulw")
+    assert_equal "hello world", @decrypt.find_decrypted_letters("KEDER OHULW")
+  end
 end
