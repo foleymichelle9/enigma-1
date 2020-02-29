@@ -151,5 +151,12 @@ class Enigma
       decryption_hash
     end
 
+    def decrypt(message, key, date = nil)
+      @message = message
+      @key = key
+      @date = date
+      decryption_hash_creation(@message)
+    end
+
 
 end
