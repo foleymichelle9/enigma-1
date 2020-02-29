@@ -83,31 +83,39 @@ class EnigmaTest < Minitest::Test
   end
 
   def test_it_can_find_message_indices
-    assert_equal [7, 4, 11, 11, 14, 26, 22, 14, 17, 11, 3], @enigma.find_message_indices("hello world")
-    assert_equal [7, 4, 11, 11, 14, 26, 22, 14, 17, 11, 3], @enigma.find_message_indices("HELLO WORLD")
-    assert_equal [10, 4, 3, 4, 17, 26, 14, 7, 20, 11, 22], @enigma.find_message_indices("keder ohulw")
+    encryption_expected = [7, 4, 11, 11, 14, 26, 22, 14, 17, 11, 3]
+    decryption_expected = [10, 4, 3, 4, 17, 26, 14, 7, 20, 11, 22]
+
+    assert_equal encryption_expected, @enigma.find_message_indices("hello world")
+    assert_equal encryption_expected, @enigma.find_message_indices("HELLO WORLD")
+    assert_equal decryption_expected, @enigma.find_message_indices("keder ohulw")
   end
 
   def test_it_can_slice_indices
-    assert_equal [[7, 4, 11, 11], [14, 26, 22, 14], [17, 11, 3]], @enigma.slice_indices("hello world")
-    assert_equal [[7, 4, 11, 11], [14, 26, 22, 14], [17, 11, 3]], @enigma.slice_indices("HELLO WORLD")
-    assert_equal [[10, 4, 3, 4], [17, 26, 14, 7], [20, 11, 22]], @enigma.slice_indices("keder ohulw")
+    encryption_expected = [[7, 4, 11, 11], [14, 26, 22, 14], [17, 11, 3]]
+    decryption_expected = [[10, 4, 3, 4], [17, 26, 14, 7], [20, 11, 22]]
+
+    assert_equal encryption_expected, @enigma.slice_indices("hello world")
+    assert_equal encryption_expected, @enigma.slice_indices("HELLO WORLD")
+    assert_equal decryption_expected, @enigma.slice_indices("keder ohulw")
   end
 
   def test_it_can_add_shift_to_indices
     Date.stubs(:today).returns(Date.new(1995, 8, 4))
     @enigma.stubs(:generate_random_key).returns("02715")
+    expected = [10, 31, 84, 31, 17, 53, 95, 34, 20, 38, 76]
 
-    assert_equal [10, 31, 84, 31, 17, 53, 95, 34, 20, 38, 76], @enigma.add_shift_to_indices("hello world")
-    assert_equal [10, 31, 84, 31, 17, 53, 95, 34, 20, 38, 76], @enigma.add_shift_to_indices("HELLO WORLD")
+    assert_equal expected, @enigma.add_shift_to_indices("hello world")
+    assert_equal expected, @enigma.add_shift_to_indices("HELLO WORLD")
   end
 
   def test_it_can_find_indices_in_alphabet_array_range
     Date.stubs(:today).returns(Date.new(1995, 8, 4))
     @enigma.stubs(:generate_random_key).returns("02715")
+    expected = [10, 4, 3, 4, 17, 26, 14, 7, 20, 11, 22]
 
-    assert_equal [10, 4, 3, 4, 17, 26, 14, 7, 20, 11, 22], @enigma.indices_in_alphabet_array("hello world")
-    assert_equal [10, 4, 3, 4, 17, 26, 14, 7, 20, 11, 22], @enigma.indices_in_alphabet_array("HELLO WORLD")
+    assert_equal expected, @enigma.indices_in_alphabet_array("hello world")
+    assert_equal expected, @enigma.indices_in_alphabet_array("HELLO WORLD")
   end
 
   def test_it_can_find_encryted_letters
@@ -172,17 +180,19 @@ class EnigmaTest < Minitest::Test
   def test_it_can_subtract_shifts_from_indices
     Date.stubs(:today).returns(Date.new(1995, 8, 4))
     @enigma.stubs(:generate_random_key).returns("02715")
+    expected = [7, -23, -70, -16, 14, -1, -59, -13, 17, -16, -51]
 
-    assert_equal [7, -23, -70, -16, 14, -1, -59, -13, 17, -16, -51], @enigma.subtract_shift_from_indices("keder ohulw")
-    assert_equal [7, -23, -70, -16, 14, -1, -59, -13, 17, -16, -51], @enigma.subtract_shift_from_indices("KEDER OHULW")
+    assert_equal expected, @enigma.subtract_shift_from_indices("keder ohulw")
+    assert_equal expected, @enigma.subtract_shift_from_indices("KEDER OHULW")
   end
 
   def test_it_can_find_decryption_indices_in_alphabet_array
     Date.stubs(:today).returns(Date.new(1995, 8, 4))
     @enigma.stubs(:generate_random_key).returns("02715")
+    expected = [7, 4, 11, 11, 14, 26, 22, 14, 17, 11, 3]
 
-    assert_equal [7, 4, 11, 11, 14, 26, 22, 14, 17, 11, 3], @enigma.decryption_indices_in_alphabet_array("keder ohulw")
-    assert_equal [7, 4, 11, 11, 14, 26, 22, 14, 17, 11, 3], @enigma.decryption_indices_in_alphabet_array("KEDER OHULW")
+    assert_equal expected, @enigma.decryption_indices_in_alphabet_array("keder ohulw")
+    assert_equal expected, @enigma.decryption_indices_in_alphabet_array("KEDER OHULW")
   end
 
   def test_it_can_find_decrypted_letters
