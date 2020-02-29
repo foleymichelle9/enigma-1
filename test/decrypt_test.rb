@@ -5,10 +5,10 @@ require 'date'
 
 class DecryptTest < Minitest::Test
   def setup
-    @encrypt = Encrypt.new
+    @decrypt = Decrypt.new
   end
 
   def test_it_exists
-    assert_instance_of Encrypt, @encrypt
+    assert_instance_of Decrypt, @decrypt
   end
 end
