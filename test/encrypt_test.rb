@@ -96,4 +96,13 @@ class EncryptTest < Minitest::Test
     assert_equal encryption_expected, @encrypt.slice_indices("hello world")
     assert_equal encryption_expected, @encrypt.slice_indices("HELLO WORLD")
   end
+
+  def test_it_can_add_shift_to_indices
+    Date.stubs(:today).returns(Date.new(1995, 8, 4))
+    @encrypt.stubs(:generate_random_key).returns("02715")
+    expected = [10, 31, 84, 31, 17, 53, 95, 34, 20, 38, 76]
+
+    assert_equal expected, @encrypt.add_shift_to_indices("hello world")
+    assert_equal expected, @encrypt.add_shift_to_indices("HELLO WORLD")
+  end
 end
