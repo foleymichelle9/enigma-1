@@ -135,4 +135,15 @@ class EncryptTest < Minitest::Test
     assert_equal expected, @encrypt.encryption_hash_creation("hello world")
     assert_equal expected, @encrypt.encryption_hash_creation("HELLO WORLD")
   end
+
+  def test_test_it_can_encrypt_message_with_key_and_date
+    expected = {
+        encryption: "keder ohulw",
+        key: "02715",
+        date: "040895"
+      }
+
+    assert_equal expected, @encrypt.encrypt("hello world", "02715", "040895")
+    assert_equal expected, @encrypt.encrypt("HELLO WORLD", "02715", "040895")
+  end
 end
