@@ -84,16 +84,14 @@ class DecryptTest < Minitest::Test
   end
 
   def test_it_can_find_message_indices
-    encryption_expected = [7, 4, 11, 11, 14, 26, 22, 14, 17, 11, 3]
+    expected = [10, 4, 3, 4, 17, 26, 14, 7, 20, 11, 22]
 
-    assert_equal encryption_expected, @decrypt.find_message_indices("hello world")
-    assert_equal encryption_expected, @decrypt.find_message_indices("HELLO WORLD")
+    assert_equal expected, @decrypt.find_message_indices("keder ohulw")
   end
 
   def test_it_can_slice_indices
-    encryption_expected = [[7, 4, 11, 11], [14, 26, 22, 14], [17, 11, 3]]
+    expected = [[10, 4, 3, 4], [17, 26, 14, 7], [20, 11, 22]]
 
-    assert_equal encryption_expected, @decrypt.slice_indices("hello world")
-    assert_equal encryption_expected, @decrypt.slice_indices("HELLO WORLD")
+    assert_equal expected, @decrypt.slice_indices("keder ohulw")
   end
 end
