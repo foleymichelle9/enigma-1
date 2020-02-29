@@ -31,4 +31,12 @@ class Encrypt < Cipher
     end
     letters.join
   end
+
+  def encryption_hash_creation(message)
+    encryption_hash = {}
+    encryption_hash[:encryption] = find_encryted_letters(message)
+    encryption_hash[:key] = @key
+    encryption_hash[:date] = @date
+    encryption_hash
+  end
 end
