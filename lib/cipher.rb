@@ -1,4 +1,10 @@
 class Cipher
+  def initialize
+    @message = message
+    @key = key
+    @date = date
+  end
+
   def alphabet
     ("a".."z").to_a << " "
   end
