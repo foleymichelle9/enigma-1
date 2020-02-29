@@ -61,7 +61,7 @@ class Enigma
   end
 
   def find_message_indices(message)
-    characters = message.split('')
+    characters = message.downcase.split('')
 
     indices = []
     characters.each do |character|
