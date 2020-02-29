@@ -102,6 +102,16 @@ class Enigma
     slices
   end
 
+  def encryption_indices_in_alphabet_array(message)
+    add_shift_to_indices(message).map do |index|
+      if index > 26
+        index % 27
+      else
+        index
+      end
+    end
+  end
+
   def decryption_indices_in_alphabet_array(message)
     subtract_shift_from_indices(message).map do |index|
       if index < -26
@@ -114,20 +124,10 @@ class Enigma
     end
   end
 
-  def indices_in_alphabet_array(message)
-    add_shift_to_indices(message).map do |index|
-       if index > 26
-         index % 27
-       else
-         index
-       end
-     end
-  end
-
   def find_encryted_letters(message)
     letters = []
 
-    indices_in_alphabet_array(message).each do |index|
+    encryption_indices_in_alphabet_array(message).each do |index|
       letters << alphabet[index]
     end
     letters.join
