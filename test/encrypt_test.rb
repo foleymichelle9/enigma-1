@@ -82,4 +82,11 @@ class EncryptTest < Minitest::Test
 
     assert_equal expected, @encrypt.find_shifts
   end
+
+  def test_it_can_find_message_indices
+    encryption_expected = [7, 4, 11, 11, 14, 26, 22, 14, 17, 11, 3]
+
+    assert_equal encryption_expected, @encrypt.find_message_indices("hello world")
+    assert_equal encryption_expected, @encrypt.find_message_indices("HELLO WORLD")
+  end
 end
