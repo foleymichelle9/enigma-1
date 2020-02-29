@@ -134,4 +134,14 @@ class Enigma
      end
   end
 
+  def find_decrypted_letters(message)
+  decrypted_letters = []
+
+  decryption_indices_in_alphabet_array(message).each do |index|
+    decrypted_letters << alphabet[index]
+  end
+  decrypted_letters.join
+end
+
+
 end
