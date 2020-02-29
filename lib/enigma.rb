@@ -135,13 +135,21 @@ class Enigma
   end
 
   def find_decrypted_letters(message)
-  decrypted_letters = []
+      decrypted_letters = []
 
-  decryption_indices_in_alphabet_array(message).each do |index|
-    decrypted_letters << alphabet[index]
-  end
-  decrypted_letters.join
-end
+      decryption_indices_in_alphabet_array(message).each do |index|
+        decrypted_letters << alphabet[index]
+      end
+      decrypted_letters.join
+    end
+
+    def decryption_hash_creation(message)
+      decryption_hash = {}
+      decryption_hash[:decryption] = find_decrypted_letters(message)
+      decryption_hash[:key] = @key
+      decryption_hash[:date] = @date
+      decryption_hash
+    end
 
 
 end
