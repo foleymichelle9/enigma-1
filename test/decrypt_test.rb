@@ -57,4 +57,16 @@ class DecryptTest < Minitest::Test
 
     assert_equal expected, @decrypt.find_keys
   end
+
+  def test_it_can_find_offsets
+    Date.stubs(:today).returns(Date.new(1995, 8, 4))
+    expected = {
+      :a_offset=>1,
+      :b_offset=>0,
+      :c_offset=>2,
+      :d_offset=>5
+    }
+
+    assert_equal expected, @decrypt.find_offsets
+  end
 end
