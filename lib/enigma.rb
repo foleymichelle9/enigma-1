@@ -3,10 +3,10 @@ require 'date'
 class Enigma
 
   def encrypt(message, key = nil, date = nil)
-  @message = message
-  @key = key
-  @date = date
-  encryption_hash_creation(@message)
+    @message = message
+    @key = key
+    @date = date
+    encryption_hash_creation(@message)
   end
 
   def decrypt(message, key, date = nil)
