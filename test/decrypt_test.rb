@@ -86,7 +86,7 @@ class DecryptTest < Minitest::Test
   def test_it_can_find_message_indices
     encryption_expected = [7, 4, 11, 11, 14, 26, 22, 14, 17, 11, 3]
 
-    assert_equal encryption_expected, @encrypt.find_message_indices("hello world")
-    assert_equal encryption_expected, @encrypt.find_message_indices("HELLO WORLD")
+    assert_equal encryption_expected, @decrypt.find_message_indices("hello world")
+    assert_equal encryption_expected, @decrypt.find_message_indices("HELLO WORLD")
   end
 end
