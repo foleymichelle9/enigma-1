@@ -69,4 +69,17 @@ class DecryptTest < Minitest::Test
 
     assert_equal expected, @decrypt.find_offsets
   end
+
+  def test_it_can_find_shifts
+    Date.stubs(:today).returns(Date.new(1995, 8, 4))
+    @decrypt.stubs(:generate_random_key).returns("02715")
+    expected = {
+      :a_shift=>3,
+      :b_shift=>27,
+      :c_shift=>73,
+      :d_shift=>20
+    }
+
+    assert_equal expected, @decrypt.find_shifts
+  end
 end
