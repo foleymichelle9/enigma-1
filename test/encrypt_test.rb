@@ -117,9 +117,9 @@ class EncryptTest < Minitest::Test
 
   def test_it_can_find_encryted_letters
     Date.stubs(:today).returns(Date.new(1995, 8, 4))
-    @enigma.stubs(:generate_random_key).returns("02715")
+    @encrypt.stubs(:generate_random_key).returns("02715")
 
-    assert_equal "keder ohulw", @enigma.find_encryted_letters("hello world")
-    assert_equal "keder ohulw", @enigma.find_encryted_letters("HELLO WORLD")
+    assert_equal "keder ohulw", @encrypt.find_encryted_letters("hello world")
+    assert_equal "keder ohulw", @encrypt.find_encryted_letters("HELLO WORLD")
   end
 end
