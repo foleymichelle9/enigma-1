@@ -22,4 +22,13 @@ class Encrypt < Cipher
       end
     end
   end
+
+  def find_encryted_letters(message)
+    letters = []
+
+    encryption_indices_in_alphabet_array(message).each do |index|
+      letters << alphabet[index]
+    end
+    letters.join
+  end
 end
