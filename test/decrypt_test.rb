@@ -94,4 +94,13 @@ class DecryptTest < Minitest::Test
 
     assert_equal expected, @decrypt.slice_indices("keder ohulw")
   end
+
+  def test_it_can_subtract_shifts_from_indices
+    Date.stubs(:today).returns(Date.new(1995, 8, 4))
+    @decrypt.stubs(:generate_random_key).returns("02715")
+    expected = [7, -23, -70, -16, 14, -1, -59, -13, 17, -16, -51]
+
+    assert_equal expected, @decrypt.subtract_shift_from_indices("keder ohulw")
+    assert_equal expected, @decrypt.subtract_shift_from_indices("KEDER OHULW")
+  end
 end
