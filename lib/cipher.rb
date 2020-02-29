@@ -61,4 +61,8 @@ class Cipher
     end
     indices
   end
+
+  def slice_indices(message)
+    find_message_indices(message).each_slice(4).to_a
+  end
 end
