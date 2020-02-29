@@ -133,4 +133,15 @@ class DecryptTest < Minitest::Test
     assert_equal expected, @decrypt.decryption_hash_creation("keder ohulw")
     assert_equal expected, @decrypt.decryption_hash_creation("KEDER OHULW")
   end
+
+  def test_it_can_decrypt_message_with_key_and_date
+    expected = {
+      decryption: "hello world",
+      key: "02715",
+      date: "040895"
+    }
+
+    assert_equal expected, @decrypt.decrypt("keder ohulw", "02715", "040895")
+    assert_equal expected, @decrypt.decrypt("KEDER OHULW", "02715", "040895")
+  end
 end
