@@ -12,4 +12,14 @@ class Encrypt < Cipher
     end
     slices
   end
+
+  def encryption_indices_in_alphabet_array(message)
+    add_shift_to_indices(message).map do |index|
+      if index > 26
+        index % 27
+      else
+        index
+      end
+    end
+  end
 end
