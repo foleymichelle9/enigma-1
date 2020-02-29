@@ -122,4 +122,16 @@ class Enigma
     slices
   end
 
+  def decryption_indices_in_alphabet_array(message)
+    subtract_shift_from_indices(message).map do |index|
+       if index < -26
+         index % 27
+       elsif index > -26 && index.negative?
+         27 - index.abs
+       else
+         index
+       end
+     end
+  end
+
 end
