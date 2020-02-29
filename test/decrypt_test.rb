@@ -120,4 +120,17 @@ class DecryptTest < Minitest::Test
     assert_equal "hello world", @decrypt.find_decrypted_letters("keder ohulw")
     assert_equal "hello world", @decrypt.find_decrypted_letters("KEDER OHULW")
   end
+
+  def test_it_can_get_decryption_hash_creation
+    Date.stubs(:today).returns(Date.new(1995, 8, 4))
+    @decrypt.stubs(:generate_random_key).returns("02715")
+    expected = {
+      decryption: "hello world",
+      key: "02715",
+      date: "040895"
+    }
+
+    assert_equal expected, @decrypt.decryption_hash_creation("keder ohulw")
+    assert_equal expected, @decrypt.decryption_hash_creation("KEDER OHULW")
+  end
 end
