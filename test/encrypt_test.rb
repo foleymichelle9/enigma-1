@@ -67,6 +67,6 @@ class EncryptTest < Minitest::Test
       :d_offset=>5
     }
 
-    assert_equal expected, @enigma.find_offsets
+    assert_equal expected, @encrypt.find_offsets
   end
 end
