@@ -167,6 +167,13 @@ class EnigmaTest < Minitest::Test
     assert_equal [7, -23, -70, -16, 14, -1, -59, -13, 17, -16, -51], @enigma.subtract_shift_from_indices("keder ohulw")
   end
 
+  def test_it_can_find_decryption_indices_in_alphabet_array
+    Date.stubs(:today).returns(Date.new(1995, 8, 4))
+    @enigma.stubs(:generate_random_key).returns("02715")
+
+    assert_equal [7, 4, 11, 11, 14, 26, 22, 14, 17, 11, 3], @enigma.decryption_indices_in_alphabet_array("keder ohulw")
+  end
+
   def test_it_can_decrypt_message_with_key
     skip
     Date.stubs(:today).returns(Date.new(1995, 8, 4))
