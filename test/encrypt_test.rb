@@ -154,14 +154,14 @@ class EncryptTest < Minitest::Test
         key: "02715",
         date: "280220"
       }
-    encrypted = @enigma.encrypt("hello world", "02715")
-    encrypted = @enigma.encrypt("HELLO WORLD", "02715")
+    encrypted = @encrypt.encrypt("hello world", "02715")
+    encrypted = @encrypt.encrypt("HELLO WORLD", "02715")
 
     assert_equal expected, encrypted
   end
 
   def test_it_can_encrypt_message_with_random_key
-    @enigma.stubs(:generate_random_key).returns("02715")
+    @encrypt.stubs(:generate_random_key).returns("02715")
     Date.stubs(:today).returns(Date.new(1995, 8, 4))
     expected = {
         encryption: "keder ohulw",
@@ -169,7 +169,7 @@ class EncryptTest < Minitest::Test
         date: "040895"
       }
 
-    assert_equal expected, @enigma.encrypt("hello world")
-    assert_equal expected, @enigma.encrypt("HELLO WORLD")
+    assert_equal expected, @encrypt.encrypt("hello world")
+    assert_equal expected, @encrypt.encrypt("HELLO WORLD")
   end
 end
