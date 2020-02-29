@@ -181,8 +181,19 @@ class EnigmaTest < Minitest::Test
     assert_equal "hello world", @enigma.find_decrypted_letters("keder ohulw")
   end
 
+  def test_it_can_get_decryption_hash_creation
+    Date.stubs(:today).returns(Date.new(1995, 8, 4))
+    @enigma.stubs(:generate_random_key).returns("02715")
+    expected = {
+        decryption: "hello world",
+        key: "02715",
+        date: "040895"
+      }
+
+      assert_equal expected, @enigma.decryption_hash_creation("keder ohulw")
+  end
+
   def test_it_can_decrypt_message_with_key
-    skip
     Date.stubs(:today).returns(Date.new(1995, 8, 4))
     expected = {
       decryption: "hello world",
