@@ -1,6 +1,13 @@
 require_relative 'cipher'
 
 class Encrypt < Cipher
+  def encrypt(message, key = nil, date = nil)
+    @message = message
+    @key = key
+    @date = date
+    encryption_hash_creation(@message)
+  end
+  
   def add_shift_to_indices(message)
     slices = []
     sliced = slice_indices(message)
