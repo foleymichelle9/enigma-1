@@ -105,4 +105,13 @@ class EncryptTest < Minitest::Test
     assert_equal expected, @encrypt.add_shift_to_indices("hello world")
     assert_equal expected, @encrypt.add_shift_to_indices("HELLO WORLD")
   end
+
+  def test_it_can_find_encryption_indices_in_alphabet_array_range
+    Date.stubs(:today).returns(Date.new(1995, 8, 4))
+    @enigma.stubs(:generate_random_key).returns("02715")
+    expected = [10, 4, 3, 4, 17, 26, 14, 7, 20, 11, 22]
+
+    assert_equal expected, @enigma.encryption_indices_in_alphabet_array("hello world")
+    assert_equal expected, @enigma.encryption_indices_in_alphabet_array("HELLO WORLD")
+  end
 end
