@@ -84,11 +84,13 @@ class EnigmaTest < Minitest::Test
 
   def test_it_can_find_message_indices
     assert_equal [7, 4, 11, 11, 14, 26, 22, 14, 17, 11, 3], @enigma.find_message_indices("hello world")
+    assert_equal [7, 4, 11, 11, 14, 26, 22, 14, 17, 11, 3], @enigma.find_message_indices("HELLO WORLD")
     assert_equal [10, 4, 3, 4, 17, 26, 14, 7, 20, 11, 22], @enigma.find_message_indices("keder ohulw")
   end
 
   def test_it_can_slice_indices
     assert_equal [[7, 4, 11, 11], [14, 26, 22, 14], [17, 11, 3]], @enigma.slice_indices("hello world")
+    assert_equal [[7, 4, 11, 11], [14, 26, 22, 14], [17, 11, 3]], @enigma.slice_indices("HELLO WORLD")
     assert_equal [[10, 4, 3, 4], [17, 26, 14, 7], [20, 11, 22]], @enigma.slice_indices("keder ohulw")
   end
 
@@ -97,6 +99,7 @@ class EnigmaTest < Minitest::Test
     @enigma.stubs(:generate_random_key).returns("02715")
 
     assert_equal [10, 31, 84, 31, 17, 53, 95, 34, 20, 38, 76], @enigma.add_shift_to_indices("hello world")
+    assert_equal [10, 31, 84, 31, 17, 53, 95, 34, 20, 38, 76], @enigma.add_shift_to_indices("HELLO WORLD")
   end
 
   def test_it_can_find_indices_in_alphabet_array_range
@@ -104,6 +107,7 @@ class EnigmaTest < Minitest::Test
     @enigma.stubs(:generate_random_key).returns("02715")
 
     assert_equal [10, 4, 3, 4, 17, 26, 14, 7, 20, 11, 22], @enigma.indices_in_alphabet_array("hello world")
+    assert_equal [10, 4, 3, 4, 17, 26, 14, 7, 20, 11, 22], @enigma.indices_in_alphabet_array("HELLO WORLD")
   end
 
   def test_it_can_find_encryted_letters
@@ -111,6 +115,7 @@ class EnigmaTest < Minitest::Test
     @enigma.stubs(:generate_random_key).returns("02715")
 
     assert_equal "keder ohulw", @enigma.find_encryted_letters("hello world")
+    assert_equal "keder ohulw", @enigma.find_encryted_letters("HELLO WORLD")
   end
 
   def test_it_can_create_encryption_hash_creation
@@ -123,6 +128,7 @@ class EnigmaTest < Minitest::Test
     }
 
     assert_equal expected, @enigma.encryption_hash_creation("hello world")
+    assert_equal expected, @enigma.encryption_hash_creation("HELLO WORLD")
   end
 
   def test_test_it_can_encrypt_message_with_key_and_date
@@ -133,6 +139,7 @@ class EnigmaTest < Minitest::Test
       }
 
     assert_equal expected, @enigma.encrypt("hello world", "02715", "040895")
+    assert_equal expected, @enigma.encrypt("HELLO WORLD", "02715", "040895")
   end
 
   def test_it_can_encrypt_message_with_key
@@ -142,7 +149,8 @@ class EnigmaTest < Minitest::Test
         key: "02715",
         date: "280220"
       }
-      encrypted = @enigma.encrypt("hello world", "02715")
+    encrypted = @enigma.encrypt("hello world", "02715")
+    encrypted = @enigma.encrypt("HELLO WORLD", "02715")
 
     assert_equal expected, encrypted
   end
@@ -157,6 +165,7 @@ class EnigmaTest < Minitest::Test
       }
 
     assert_equal expected, @enigma.encrypt("hello world")
+    assert_equal expected, @enigma.encrypt("HELLO WORLD")
   end
   #==================================DECRYPTION===================================
 
@@ -165,6 +174,7 @@ class EnigmaTest < Minitest::Test
     @enigma.stubs(:generate_random_key).returns("02715")
 
     assert_equal [7, -23, -70, -16, 14, -1, -59, -13, 17, -16, -51], @enigma.subtract_shift_from_indices("keder ohulw")
+    assert_equal [7, -23, -70, -16, 14, -1, -59, -13, 17, -16, -51], @enigma.subtract_shift_from_indices("KEDER OHULW")
   end
 
   def test_it_can_find_decryption_indices_in_alphabet_array
@@ -172,6 +182,7 @@ class EnigmaTest < Minitest::Test
     @enigma.stubs(:generate_random_key).returns("02715")
 
     assert_equal [7, 4, 11, 11, 14, 26, 22, 14, 17, 11, 3], @enigma.decryption_indices_in_alphabet_array("keder ohulw")
+    assert_equal [7, 4, 11, 11, 14, 26, 22, 14, 17, 11, 3], @enigma.decryption_indices_in_alphabet_array("KEDER OHULW")
   end
 
   def test_it_can_find_decrypted_letters
@@ -179,6 +190,7 @@ class EnigmaTest < Minitest::Test
     @enigma.stubs(:generate_random_key).returns("02715")
 
     assert_equal "hello world", @enigma.find_decrypted_letters("keder ohulw")
+    assert_equal "hello world", @enigma.find_decrypted_letters("KEDER OHULW")
   end
 
   def test_it_can_get_decryption_hash_creation
@@ -191,6 +203,7 @@ class EnigmaTest < Minitest::Test
       }
 
       assert_equal expected, @enigma.decryption_hash_creation("keder ohulw")
+      assert_equal expected, @enigma.decryption_hash_creation("KEDER OHULW")
   end
 
   def test_it_can_decrypt_message_with_key
@@ -213,5 +226,6 @@ class EnigmaTest < Minitest::Test
     }
 
     assert_equal expected, @enigma.decrypt("keder ohulw", "02715", "040895")
+    assert_equal expected, @enigma.decrypt("KEDER OHULW", "02715", "040895")
   end
 end
