@@ -195,6 +195,7 @@ class EnigmaTest < Minitest::Test
 
   def test_it_can_decrypt_message_with_key
     Date.stubs(:today).returns(Date.new(1995, 8, 4))
+    encrypted = @enigma.encrypt("hello world", "02715")
     expected = {
       decryption: "hello world",
       key: "02715",
@@ -205,7 +206,6 @@ class EnigmaTest < Minitest::Test
   end
 
   def test_it_can_decrypt_message_with_key_and_date
-    skip
     expected = {
       decryption: "hello world",
       key: "02715",
