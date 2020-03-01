@@ -115,7 +115,7 @@ class DecryptTest < Minitest::Test
     Date.stubs(:today).returns(Date.new(1995, 8, 4))
     @decrypt.stubs(:generate_random_key).returns("02715")
     expected = [7, 4, 11, 11, 14, 26, 22, 14, 17, 11, 3]
-    sym_expected = ["!", -17, -69, -17, 1, -10, -47, "!", 11, -20, -53, -9, 19, "!"]
+    sym_expected = ["!", 10, 12, 10, 1, 17, 7, "!", 11, 7, 1, 18, 19, "!"]
 
     assert_equal expected, @decrypt.decryption_indices_in_alphabet_array("keder ohulw")
     assert_equal expected, @decrypt.decryption_indices_in_alphabet_array("KEDER OHULW")
