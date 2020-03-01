@@ -1,11 +1,13 @@
 require_relative 'test_helper'
 require 'mocha/minitest'
 require './lib/decrypt'
+require './lib/encrypt'
 require 'date'
 
 class DecryptTest < Minitest::Test
   def setup
     @decrypt = Decrypt.new
+    @encryption = Encrypt.new
   end
 
   def test_it_exists
@@ -168,15 +170,14 @@ class DecryptTest < Minitest::Test
   end
 
   def test_it_can_decrypt_message_with_key
-    skip
     Date.stubs(:today).returns(Date.new(1995, 8, 4))
-    encrypted = @enigma.encrypt("hello world", "02715")
+    encrypted = @encryption.encrypt("hello world", "02715")
     expected = {
       decryption: "hello world",
       key: "02715",
       date: "040895"
     }
 
-    assert_equal expected, @enigma.decrypt(encrypted[:encryption], "02715")
+    assert_equal expected, @decrypt.decrypt(encrypted[:encryption], "02715")
   end
 end
