@@ -1,8 +1,8 @@
 module Searchable
-  def find_letters(message, collection)
+  def find_letters(collection)
     letters = []
 
-    collection(message).each do |index|
+    collection.each do |index|
       if index.is_a?(Numeric)
         letters << alphabet[index]
       elsif !index.is_a?(Numeric)
