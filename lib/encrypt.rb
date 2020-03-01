@@ -39,7 +39,11 @@ class Encrypt < Cipher
     letters = []
 
     encryption_indices_in_alphabet_array(message).each do |index|
-      letters << alphabet[index]
+      if index.is_a?(Numeric)
+        letters << alphabet[index]
+      elsif !index.is_a?(Numeric)
+        letters << index
+      end
     end
     letters.join
   end
