@@ -27,7 +27,7 @@ class Encrypt < Cipher
 
   def encryption_indices_in_alphabet_array(message)
     add_shift_to_indices(message).map do |index|
-      if index > 26
+      if index.is_a?(Numeric) && index > 26
         index % 27
       else
         index
@@ -39,7 +39,7 @@ class Encrypt < Cipher
     letters = []
 
     encryption_indices_in_alphabet_array(message).each do |index|
-      if index.is_a?(Numeric) && index.is_a?(Numeric)
+      if index.is_a?(Numeric)
         letters << alphabet[index]
       elsif !index.is_a?(Numeric)
         letters << index
