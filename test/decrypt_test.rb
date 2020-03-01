@@ -85,41 +85,41 @@ class DecryptTest < Minitest::Test
 
   def test_it_can_find_message_indices
     expected = [10, 4, 3, 4, 17, 26, 14, 7, 20, 11, 22]
-    sym_expected = ["!", 10, 4, 3, 4, 17, 26,"!",  14, 7, 20, 11, 22, "!"]
+    sym_expected = ["!", 10, 4, 3, 4, 17, "!", 26,  14, 7, 20, 11, 22, "!"]
 
     assert_equal expected, @decrypt.find_message_indices("keder ohulw")
-    assert_equal sym_expected, @decrypt.find_message_indices("!keder !ohulw!")
+    assert_equal sym_expected, @decrypt.find_message_indices("!keder! ohulw!")
   end
 
   def test_it_can_slice_indices
     expected = [[10, 4, 3, 4], [17, 26, 14, 7], [20, 11, 22]]
-    sym_expected = [["!", 10, 4, 3], [4, 17, 26,"!"],  [14, 7, 20, 11], [22, "!"]]
+    sym_expected = [["!", 10, 4, 3], [4, 17, "!", 26],  [14, 7, 20, 11], [22, "!"]]
 
     assert_equal expected, @decrypt.slice_indices("keder ohulw")
     assert_equal expected, @decrypt.slice_indices("KEDER OHULW")
-    assert_equal sym_expected, @decrypt.slice_indices("!keder !ohulw!")
+    assert_equal sym_expected, @decrypt.slice_indices("!keder! ohulw!")
   end
 
   def test_it_can_subtract_shifts_from_indices
     Date.stubs(:today).returns(Date.new(1995, 8, 4))
     @decrypt.stubs(:generate_random_key).returns("02715")
     expected = [7, -23, -70, -16, 14, -1, -59, -13, 17, -16, -51]
-    sym_expected = ["!", -17, -69, -17, 1, -10, -47, "!", 11, -20, -53, -9, 19, "!"]
+    sym_expected = ["!", -17, -69, -17, 1, -10, "!", 6, 11, -20, -53, -9, 19, "!"]
 
     assert_equal expected, @decrypt.subtract_shift_from_indices("keder ohulw")
     assert_equal expected, @decrypt.subtract_shift_from_indices("KEDER OHULW")
-    assert_equal sym_expected, @decrypt.subtract_shift_from_indices("!keder !ohulw!")
+    assert_equal sym_expected, @decrypt.subtract_shift_from_indices("!keder! ohulw!")
   end
 
   def test_it_can_find_decryption_indices_in_alphabet_array
     Date.stubs(:today).returns(Date.new(1995, 8, 4))
     @decrypt.stubs(:generate_random_key).returns("02715")
     expected = [7, 4, 11, 11, 14, 26, 22, 14, 17, 11, 3]
-    sym_expected = ["!", 10, 12, 10, 1, 17, 7, "!", 11, 7, 1, 18, 19, "!"]
+    sym_expected = ["!", 10, 12, 10, 1, 17, "!", 6, 11, 7, 1, 18, 19, "!"]
 
     assert_equal expected, @decrypt.decryption_indices_in_alphabet_array("keder ohulw")
     assert_equal expected, @decrypt.decryption_indices_in_alphabet_array("KEDER OHULW")
-    assert_equal sym_expected, @decrypt.decryption_indices_in_alphabet_array("!keder !ohulw!")
+    assert_equal sym_expected, @decrypt.decryption_indices_in_alphabet_array("!keder! ohulw!")
   end
 
   def test_it_can_find_decrypted_letters
@@ -139,9 +139,15 @@ class DecryptTest < Minitest::Test
       key: "02715",
       date: "040895"
     }
+    sym_expected = {
+      decryption: "!hello! world!",
+      key: "02715",
+      date: "040895"
+    }
 
     assert_equal expected, @decrypt.decryption_hash_creation("keder ohulw")
     assert_equal expected, @decrypt.decryption_hash_creation("KEDER OHULW")
+    assert_equal sym_expected, @decrypt.decryption_hash_creation("!hxeoo!tzojeg!")
   end
 
   def test_it_can_decrypt_message_with_key_and_date
@@ -150,9 +156,15 @@ class DecryptTest < Minitest::Test
       key: "02715",
       date: "040895"
     }
+    sym_expected = {
+      decryption: "!hello! world!",
+      key: "02715",
+      date: "040895"
+    }
 
     assert_equal expected, @decrypt.decrypt("keder ohulw", "02715", "040895")
     assert_equal expected, @decrypt.decrypt("KEDER OHULW", "02715", "040895")
+    assert_equal sym_expected, @decrypt.decrypt(("!hxeoo!tzojeg!"), "02715", "040895")
   end
 
   def test_it_can_decrypt_message_with_key
