@@ -85,32 +85,41 @@ class DecryptTest < Minitest::Test
 
   def test_it_can_find_message_indices
     expected = [10, 4, 3, 4, 17, 26, 14, 7, 20, 11, 22]
+    sym_expected = ["!", 10, 4, 3, 4, 17, 26,"!",  14, 7, 20, 11, 22, "!"]
 
     assert_equal expected, @decrypt.find_message_indices("keder ohulw")
+    assert_equal sym_expected, @decrypt.find_message_indices("!keder !ohulw!")
   end
 
   def test_it_can_slice_indices
     expected = [[10, 4, 3, 4], [17, 26, 14, 7], [20, 11, 22]]
+    sym_expected = [["!", 10, 4, 3], [4, 17, 26,"!"],  [14, 7, 20, 11], [22, "!"]]
 
     assert_equal expected, @decrypt.slice_indices("keder ohulw")
+    assert_equal expected, @decrypt.slice_indices("KEDER OHULW")
+    assert_equal sym_expected, @decrypt.slice_indices("!keder !ohulw!")
   end
 
   def test_it_can_subtract_shifts_from_indices
     Date.stubs(:today).returns(Date.new(1995, 8, 4))
     @decrypt.stubs(:generate_random_key).returns("02715")
     expected = [7, -23, -70, -16, 14, -1, -59, -13, 17, -16, -51]
+    sym_expected = ["!", -17, -69, -17, 1, -10, -47, "!", 11, -20, -53, -9, 19, "!"]
 
     assert_equal expected, @decrypt.subtract_shift_from_indices("keder ohulw")
     assert_equal expected, @decrypt.subtract_shift_from_indices("KEDER OHULW")
+    assert_equal sym_expected, @decrypt.subtract_shift_from_indices("!keder !ohulw!")
   end
 
   def test_it_can_find_decryption_indices_in_alphabet_array
     Date.stubs(:today).returns(Date.new(1995, 8, 4))
     @decrypt.stubs(:generate_random_key).returns("02715")
     expected = [7, 4, 11, 11, 14, 26, 22, 14, 17, 11, 3]
+    sym_expected = ["!", -17, -69, -17, 1, -10, -47, "!", 11, -20, -53, -9, 19, "!"]
 
     assert_equal expected, @decrypt.decryption_indices_in_alphabet_array("keder ohulw")
     assert_equal expected, @decrypt.decryption_indices_in_alphabet_array("KEDER OHULW")
+    assert_equal sym_expected, @decrypt.decryption_indices_in_alphabet_array("!keder !ohulw!")
   end
 
   def test_it_can_find_decrypted_letters
@@ -146,6 +155,7 @@ class DecryptTest < Minitest::Test
   end
 
   def test_it_can_decrypt_message_with_key
+    skip
     Date.stubs(:today).returns(Date.new(1995, 8, 4))
     encrypted = @enigma.encrypt("hello world", "02715")
     expected = {
