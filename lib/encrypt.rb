@@ -1,4 +1,5 @@
 require_relative 'cipher'
+require "./lib/module/searchable"
 
 class Encrypt < Cipher
   include Searchable
