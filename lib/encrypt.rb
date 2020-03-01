@@ -1,6 +1,7 @@
 require_relative 'cipher'
 
 class Encrypt < Cipher
+  include Searchable
 
   def encrypt(message, key = nil, date = nil)
     @message = message
