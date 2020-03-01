@@ -128,6 +128,7 @@ class DecryptTest < Minitest::Test
 
     assert_equal "hello world", @decrypt.find_decrypted_letters("keder ohulw")
     assert_equal "hello world", @decrypt.find_decrypted_letters("KEDER OHULW")
+    assert_equal "!hello! world!", @decrypt.find_decrypted_letters("!hxeoo!tzojeg!")
   end
 
   def test_it_can_get_decryption_hash_creation
