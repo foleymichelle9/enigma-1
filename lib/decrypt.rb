@@ -1,8 +1,10 @@
 require_relative 'cipher'
 require './lib/module/searchable'
+require './lib/module/hashable'
 
 class Decrypt < Cipher
   include Searchable
+  include Hashable
 
   def decrypt(message, key, date = nil)
     @message = message
