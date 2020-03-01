@@ -41,7 +41,11 @@ class Decrypt < Cipher
     decrypted_letters = []
 
     decryption_indices_in_alphabet_array(message).each do |index|
-      decrypted_letters << alphabet[index]
+      if index.is_a?(Numeric)
+        decrypted_letters << alphabet[index]
+      elsif !index.is_a?(Numeric)
+        decrypted_letters << index
+      end
     end
     decrypted_letters.join
   end
