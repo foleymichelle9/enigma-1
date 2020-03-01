@@ -27,9 +27,9 @@ class Decrypt < Cipher
 
   def decryption_indices_in_alphabet_array(message)
     subtract_shift_from_indices(message).map do |index|
-      if index < -26
+      if index.is_a?(Numeric) && index < -26
         index % 27
-      elsif index > -26 && index.negative?
+      elsif index.is_a?(Numeric) && index > -26 && index.negative?
         27 - index.abs
       else
         index
