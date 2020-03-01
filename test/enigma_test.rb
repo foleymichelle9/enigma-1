@@ -7,7 +7,6 @@ require 'date'
 class EnigmaTest < Minitest::Test
   def setup
     @enigma = Enigma.new
-    @encrypt = Encrypt.new
   end
 
   def test_it_exists
@@ -62,7 +61,7 @@ class EnigmaTest < Minitest::Test
   end
 
   def test_it_can_encrypt_message_with_random_key
-    @encrypt.stubs(:generate_random_key).returns("02715")
+    Encrypt.any_instance.stubs(:generate_random_key).returns("02715")
     Date.stubs(:today).returns(Date.new(1995, 8, 4))
     expected = {
         encryption: "keder ohulw",
