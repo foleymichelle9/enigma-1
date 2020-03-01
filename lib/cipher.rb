@@ -1,4 +1,9 @@
+require "./lib/module/searchable"
+require "./lib/module/hashable"
+
 class Cipher
+  include Searchable
+  include Hashable
 
   def alphabet
     ("a".."z").to_a << " "
