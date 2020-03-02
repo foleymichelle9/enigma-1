@@ -100,13 +100,13 @@ class EncryptionTest < Minitest::Test
   end
 
   def test_it_can_add_shift_to_indices
-    Date.stubs(:today).returns(Date.new(1995, 8, 4))
+    date = Date.stubs(:today).returns(Date.new(1995, 8, 4))
     expected = [10, 31, 84, 31, 17, 53, 95, 34, 20, 38, 76]
     sym_expected = ["!", 34, 77, 31, 14, 41, "!", 46, 25, 41, 90, 31, 6, "!"]
 
-    assert_equal expected, @encryption.add_shift_to_indices("hello world", "02715")
-    assert_equal expected, @encryption.add_shift_to_indices("HELLO WORLD", "02715")
-    assert_equal sym_expected, @encryption.add_shift_to_indices("!HELLO! WORLD!", "02715")
+    assert_equal expected, @encryption.add_shift_to_indices("hello world", "02715", date)
+    assert_equal expected, @encryption.add_shift_to_indices("HELLO WORLD", "02715", date)
+    assert_equal sym_expected, @encryption.add_shift_to_indices("!HELLO! WORLD!", "02715", date)
   end
 
   def test_it_can_find_encryption_indices_in_alphabet_array_range
