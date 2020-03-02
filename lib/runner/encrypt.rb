@@ -1,5 +1,7 @@
 require_relative '../enigma'
 
+enigma = Enigma.new
+
 ARGV == ["message.txt", "encrypted.txt"]
 input = ARGV
 
