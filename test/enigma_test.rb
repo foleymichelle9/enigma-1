@@ -1,7 +1,7 @@
 require_relative 'test_helper'
 require 'mocha/minitest'
 require './lib/enigma'
-require './lib/encrypt'
+require './lib/encryption'
 require 'date'
 
 class EnigmaTest < Minitest::Test
@@ -61,7 +61,7 @@ class EnigmaTest < Minitest::Test
   end
 
   def test_it_can_encrypt_message_with_random_key
-    Encrypt.any_instance.stubs(:generate_random_key).returns("02715")
+    Encryption.any_instance.stubs(:generate_random_key).returns("02715")
     Date.stubs(:today).returns(Date.new(1995, 8, 4))
     expected = {
         encryption: "keder ohulw",
