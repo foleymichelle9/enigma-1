@@ -103,7 +103,7 @@ class DecryptionTest < Minitest::Test
   end
 
   def test_it_can_subtract_shifts_from_indices
-    # Date.stubs(:today).returns(Date.new(1995, 8, 4))
+    Date.stubs(:today).returns(Date.new(1995, 8, 4))
     # @decryption.stubs(:generate_random_key).returns("02715")
     expected = [7, -23, -70, -16, 14, -1, -59, -13, 17, -16, -51]
     sym_expected = ["!", -17, -69, -17, 1, -10, "!", 6, 11, -20, -53, -9, 19, "!"]
