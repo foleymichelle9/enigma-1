@@ -1,5 +1,5 @@
-require_relative 'encrypt'
-require_relative 'decrypt'
+require_relative 'encryption'
+require_relative 'decryption'
 require 'date'
 
 class Enigma
