@@ -4,7 +4,7 @@ class Decryption < Cipher
 
   def decrypt(message, key, date = nil)
     @date = date
-    decryption_hash_creation(message)
+    decryption_hash_creation(message, key)
   end
 
   def subtract_shift_from_indices(message, key)
