@@ -37,12 +37,12 @@ class Cipher
     offsets
   end
 
-  def find_shifts(key)
+  def find_shifts(key, date)
     shifts = {}
-    shifts[:a_shift] = find_offsets[:a_offset] + find_keys(key)[:a_key]
-    shifts[:b_shift] = find_offsets[:b_offset] + find_keys(key)[:b_key]
-    shifts[:c_shift] = find_offsets[:c_offset] + find_keys(key)[:c_key]
-    shifts[:d_shift] = find_offsets[:d_offset] + find_keys(key)[:d_key]
+    shifts[:a_shift] = find_offsets(date)[:a_offset] + find_keys(key)[:a_key]
+    shifts[:b_shift] = find_offsets(date)[:b_offset] + find_keys(key)[:b_key]
+    shifts[:c_shift] = find_offsets(date)[:c_offset] + find_keys(key)[:c_key]
+    shifts[:d_shift] = find_offsets(date)[:d_offset] + find_keys(key)[:d_key]
     shifts
   end
 
