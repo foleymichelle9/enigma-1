@@ -82,7 +82,7 @@ class DecryptionTest < Minitest::Test
       :d_shift=>20
     }
 
-    assert_equal expected, @decryption.find_shifts
+    assert_equal expected, @decryption.find_shifts("02715")
   end
 
   def test_it_can_find_message_indices
