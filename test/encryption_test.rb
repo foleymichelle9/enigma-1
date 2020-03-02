@@ -103,7 +103,7 @@ class EncryptionTest < Minitest::Test
 
   def test_it_can_add_shift_to_indices
     Date.stubs(:today).returns(Date.new(1995, 8, 4))
-    @encryption.stubs(:generate_random_key).returns("02715")
+    # @encryption.stubs(:generate_random_key).returns("02715")
     expected = [10, 31, 84, 31, 17, 53, 95, 34, 20, 38, 76]
     sym_expected = ["!", 34, 77, 31, 14, 41, "!", 46, 25, 41, 90, 31, 6, "!"]
 
@@ -114,7 +114,7 @@ class EncryptionTest < Minitest::Test
 
   def test_it_can_find_encryption_indices_in_alphabet_array_range
     Date.stubs(:today).returns(Date.new(1995, 8, 4))
-    @encryption.stubs(:generate_random_key).returns("02715")
+    # @encryption.stubs(:generate_random_key).returns("02715")
     expected = [10, 4, 3, 4, 17, 26, 14, 7, 20, 11, 22]
     sym_expected = ["!", 7, 23, 4, 14, 14, "!", 19, 25, 14, 9, 4, 6, "!"]
 
