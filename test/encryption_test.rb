@@ -1,15 +1,15 @@
 require_relative 'test_helper'
 require 'mocha/minitest'
-require './lib/encrypt'
+require './lib/encryption'
 require 'date'
 
-class EncryptTest < Minitest::Test
+class EncryptionTest < Minitest::Test
   def setup
-    @encryption = Encrypt.new
+    @encryption = Encryption.new
   end
 
   def test_it_exists
-    assert_instance_of Encrypt, @encryption
+    assert_instance_of Encryption, @encryption
   end
 
   def test_it_can_return_alphabet_array
