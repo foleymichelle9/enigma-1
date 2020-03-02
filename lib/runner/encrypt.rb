@@ -6,3 +6,5 @@ write_message.close
 
 read_message = File.open('./lib/runner/message.txt', "r")
 message = read_message.read
+
+write_encryption = File.open('./lib/runner/encrypted.txt', "w")
