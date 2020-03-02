@@ -25,7 +25,6 @@ class Cipher
   end
 
   def find_offsets
-    @date = Date.today.strftime('%d%m%y') if @date.nil?
     date_squared = @date.to_i * @date.to_i
     last_four = date_squared.to_s[-4..-1]
     last_four = last_four

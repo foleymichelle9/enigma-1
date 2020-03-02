@@ -4,7 +4,7 @@ class Encryption < Cipher
 
   def encrypt(message, key = nil, date = nil)
     key = generate_random_key if key.nil?
-    @date = date
+    date = Date.today.strftime('%d%m%y') if date.nil?
     encryption_hash_creation(message, key)
   end
 

@@ -3,7 +3,7 @@ require_relative 'cipher'
 class Decryption < Cipher
 
   def decrypt(message, key, date = nil)
-    @date = date
+    date = Date.today.strftime('%d%m%y') if date.nil?
     decryption_hash_creation(message, key)
   end
 
