@@ -3,3 +3,5 @@ input = ARGV
 write_message = File.open('./lib/runner/message.txt', "w")
 write_message.write("hello world")
 write_message.close
+
+read_message = File.open('./lib/runner/message.txt', "r")
