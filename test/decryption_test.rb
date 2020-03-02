@@ -121,11 +121,11 @@ class DecryptionTest < Minitest::Test
   end
 
   def test_it_can_find_decrypted_letters
-    Date.stubs(:today).returns(Date.new(1995, 8, 4))
+    date = Date.stubs(:today).returns(Date.new(1995, 8, 4))
 
-    assert_equal "hello world", @decryption.find_decrypted_letters("keder ohulw", "02715")
-    assert_equal "hello world", @decryption.find_decrypted_letters("KEDER OHULW", "02715")
-    assert_equal "!hello! world!", @decryption.find_decrypted_letters("!hxeoo!tzojeg!", "02715")
+    assert_equal "hello world", @decryption.find_decrypted_letters("keder ohulw", "02715", date)
+    assert_equal "hello world", @decryption.find_decrypted_letters("KEDER OHULW", "02715", date)
+    assert_equal "!hello! world!", @decryption.find_decrypted_letters("!hxeoo!tzojeg!", "02715", date)
   end
 
   def test_it_can_get_decryption_hash_creation
