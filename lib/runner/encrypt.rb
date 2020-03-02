@@ -5,3 +5,4 @@ write_message.write("hello world")
 write_message.close
 
 read_message = File.open('./lib/runner/message.txt', "r")
+message = read_message.read
