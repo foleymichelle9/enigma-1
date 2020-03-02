@@ -49,7 +49,6 @@ class DecryptionTest < Minitest::Test
   end
 
   def test_it_can_find_keys
-    # @decryption.stubs(:generate_random_key).returns("02715")
     expected = {
       :a_key=>2,
       :b_key=>27,
@@ -74,7 +73,6 @@ class DecryptionTest < Minitest::Test
 
   def test_it_can_find_shifts
     Date.stubs(:today).returns(Date.new(1995, 8, 4))
-    @decryption.stubs(:generate_random_key).returns("02715")
     expected = {
       :a_shift=>3,
       :b_shift=>27,
@@ -104,7 +102,6 @@ class DecryptionTest < Minitest::Test
 
   def test_it_can_subtract_shifts_from_indices
     Date.stubs(:today).returns(Date.new(1995, 8, 4))
-    # @decryption.stubs(:generate_random_key).returns("02715")
     expected = [7, -23, -70, -16, 14, -1, -59, -13, 17, -16, -51]
     sym_expected = ["!", -17, -69, -17, 1, -10, "!", 6, 11, -20, -53, -9, 19, "!"]
 
@@ -115,7 +112,6 @@ class DecryptionTest < Minitest::Test
 
   def test_it_can_find_decryption_indices_in_alphabet_array
     Date.stubs(:today).returns(Date.new(1995, 8, 4))
-    # @decryption.stubs(:generate_random_key).returns("02715")
     expected = [7, 4, 11, 11, 14, 26, 22, 14, 17, 11, 3]
     sym_expected = ["!", 10, 12, 10, 1, 17, "!", 6, 11, 7, 1, 18, 19, "!"]
 
@@ -126,7 +122,6 @@ class DecryptionTest < Minitest::Test
 
   def test_it_can_find_decrypted_letters
     Date.stubs(:today).returns(Date.new(1995, 8, 4))
-    @decryption.stubs(:generate_random_key).returns("02715")
 
     assert_equal "hello world", @decryption.find_decrypted_letters("keder ohulw", "02715")
     assert_equal "hello world", @decryption.find_decrypted_letters("KEDER OHULW", "02715")
