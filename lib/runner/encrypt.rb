@@ -16,3 +16,5 @@ encrypted_message = enigma.encrypt(message)
 write_encryption = File.open('./lib/runner/encrypted.txt', "w")
 write_encryption.write(encrypted_message[:encryption])
 write_encryption.close
+
+read_encryption = File.open('./lib/runner/encrypted.txt', "r")
