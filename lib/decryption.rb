@@ -39,7 +39,7 @@ class Decryption < Cipher
     find_letters(decryption_indices_in_alphabet_array(message, key))
   end
 
-  def decryption_hash_creation(message)
-    hash_creation("decryption", find_decrypted_letters(message))
+  def decryption_hash_creation(message, key)
+    hash_creation("decryption", find_decrypted_letters(message, key), key)
   end
 end
