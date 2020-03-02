@@ -1,5 +1,6 @@
 require_relative "./module/searchable"
 require_relative "./module/hashable"
+require 'date'
 
 class Cipher
   include Searchable
