@@ -1,3 +1,7 @@
+require_relative '../enigma'
+
+enigma = Enigma.new
+
 input = ARGV
 decrypted_output = ARGV[1]
 key = ARGV[2]
