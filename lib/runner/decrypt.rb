@@ -13,3 +13,4 @@ message = read_message.read
 decrypted_message = enigma.decrypt(message, key, date)
 
 write_decryption = File.open('./lib/runner/decrypted.txt', "w")
+write_decryption.write(decrypted_message[:decryption])
