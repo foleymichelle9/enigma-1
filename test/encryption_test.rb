@@ -72,7 +72,7 @@ class EncryptionTest < Minitest::Test
 
   def test_it_can_find_shifts
     Date.stubs(:today).returns(Date.new(1995, 8, 4))
-    @encryption.stubs(:generate_random_key).returns("02715")
+    # @encryption.stubs(:generate_random_key).returns("02715")
     expected = {
       :a_shift=>3,
       :b_shift=>27,
@@ -80,7 +80,7 @@ class EncryptionTest < Minitest::Test
       :d_shift=>20
     }
 
-    assert_equal expected, @encryption.find_shifts
+    assert_equal expected, @encryption.find_shifts("02715")
   end
 
   def test_it_can_find_message_indices
