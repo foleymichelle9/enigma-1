@@ -3,7 +3,6 @@ require_relative 'cipher'
 class Encryption < Cipher
 
   def encrypt(message, key = nil, date = nil)
-    @key = key
     @date = date
     encryption_hash_creation(message)
   end
