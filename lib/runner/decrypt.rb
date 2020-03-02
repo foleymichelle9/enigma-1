@@ -2,7 +2,6 @@ require_relative '../enigma'
 
 enigma = Enigma.new
 
-input = ARGV
 decrypted_output = ARGV[1]
 key = ARGV[2]
 date = ARGV[3]
@@ -15,3 +14,5 @@ decrypted_message = enigma.decrypt(message, key, date)
 write_decryption = File.open('./lib/runner/decrypted.txt', "w")
 write_decryption.write(decrypted_message[:decryption])
 write_decryption.close
+
+puts "Created #{decrypted_output} with the key #{key} and date #{date}"
