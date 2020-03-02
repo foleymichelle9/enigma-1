@@ -24,8 +24,8 @@ class Cipher
     keys
   end
 
-  def find_offsets
-    date_squared = @date.to_i * @date.to_i
+  def find_offsets(date)
+    date_squared = date.to_i * date.to_i
     last_four = date_squared.to_s[-4..-1]
     last_four = last_four
 
