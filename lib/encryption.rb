@@ -24,8 +24,8 @@ class Encryption < Cipher
     slices
   end
 
-  def encryption_indices_in_alphabet_array(message)
-    add_shift_to_indices(message).map do |index|
+  def encryption_indices_in_alphabet_array(message, key)
+    add_shift_to_indices(message, key).map do |index|
       if index.is_a?(Numeric) && index > 26
         index % 27
       else
