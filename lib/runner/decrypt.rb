@@ -11,3 +11,5 @@ read_message = File.open('./lib/runner/encrypted.txt', "r")
 message = read_message.read
 
 decrypted_message = enigma.decrypt(message, key, date)
+
+write_decryption = File.open('./lib/runner/decrypted.txt', "w")
