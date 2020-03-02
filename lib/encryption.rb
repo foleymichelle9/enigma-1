@@ -3,6 +3,7 @@ require_relative 'cipher'
 class Encryption < Cipher
 
   def encrypt(message, key = nil, date = nil)
+    key = generate_random_key if key.nil?
     @date = date
     encryption_hash_creation(message)
   end
