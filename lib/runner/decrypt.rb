@@ -9,3 +9,5 @@ date = ARGV[3]
 
 read_message = File.open('./lib/runner/encrypted.txt', "r")
 message = read_message.read
+
+decrypted_message = enigma.decrypt(message, key, date)
