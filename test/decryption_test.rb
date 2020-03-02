@@ -129,8 +129,8 @@ class DecryptionTest < Minitest::Test
   end
 
   def test_it_can_get_decryption_hash_creation
-    Date.stubs(:today).returns(Date.new(1995, 8, 4))
-    @decryption.stubs(:generate_random_key).returns("02715")
+    date = Date.stubs(:today).returns(Date.new(1995, 8, 4))
+    # @decryption.stubs(:generate_random_key).returns("02715")
     expected = {
       decryption: "hello world",
       key: "02715",
@@ -142,9 +142,9 @@ class DecryptionTest < Minitest::Test
       date: "040895"
     }
 
-    assert_equal expected, @decryption.decryption_hash_creation("keder ohulw", "02715")
-    assert_equal expected, @decryption.decryption_hash_creation("KEDER OHULW", "02715")
-    assert_equal sym_expected, @decryption.decryption_hash_creation("!hxeoo!tzojeg!", "02715")
+    assert_equal expected, @decryption.decryption_hash_creation("keder ohulw", "02715", date)
+    assert_equal expected, @decryption.decryption_hash_creation("KEDER OHULW", "02715", date)
+    assert_equal sym_expected, @decryption.decryption_hash_creation("!hxeoo!tzojeg!", "02715", date)
   end
 
   def test_it_can_decrypt_message_with_key_and_date
