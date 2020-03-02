@@ -35,8 +35,8 @@ class Decryption < Cipher
     end
   end
 
-  def find_decrypted_letters(message)
-    find_letters(decryption_indices_in_alphabet_array(message))
+  def find_decrypted_letters(message, key)
+    find_letters(decryption_indices_in_alphabet_array(message, key))
   end
 
   def decryption_hash_creation(message)
