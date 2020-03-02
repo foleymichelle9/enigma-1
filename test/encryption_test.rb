@@ -107,9 +107,9 @@ class EncryptionTest < Minitest::Test
     expected = [10, 31, 84, 31, 17, 53, 95, 34, 20, 38, 76]
     sym_expected = ["!", 34, 77, 31, 14, 41, "!", 46, 25, 41, 90, 31, 6, "!"]
 
-    assert_equal expected, @encryption.add_shift_to_indices("hello world")
-    assert_equal expected, @encryption.add_shift_to_indices("HELLO WORLD")
-    assert_equal sym_expected, @encryption.add_shift_to_indices("!HELLO! WORLD!")
+    assert_equal expected, @encryption.add_shift_to_indices("hello world", "02715")
+    assert_equal expected, @encryption.add_shift_to_indices("HELLO WORLD", "02715")
+    assert_equal sym_expected, @encryption.add_shift_to_indices("!HELLO! WORLD!", "02715")
   end
 
   def test_it_can_find_encryption_indices_in_alphabet_array_range
