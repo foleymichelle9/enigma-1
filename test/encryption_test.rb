@@ -58,7 +58,7 @@ class EncryptionTest < Minitest::Test
   end
 
   def test_it_can_find_offsets
-    Date.stubs(:today).returns(Date.new(1995, 8, 4))
+    date = Date.stubs(:today).returns(Date.new(1995, 8, 4))
     expected = {
       :a_offset=>1,
       :b_offset=>0,
@@ -66,7 +66,7 @@ class EncryptionTest < Minitest::Test
       :d_offset=>5
     }
 
-    assert_equal expected, @encryption.find_offsets
+    assert_equal expected, @encryption.find_offsets(date)
   end
 
   def test_it_can_find_shifts
