@@ -47,7 +47,7 @@ class EncryptionTest < Minitest::Test
   end
 
   def test_it_can_find_keys
-    @encryption.stubs(:generate_random_key).returns("02715")
+    # @encryption.stubs(:generate_random_key).returns("02715")
     expected = {
       :a_key=>2,
       :b_key=>27,
@@ -55,7 +55,7 @@ class EncryptionTest < Minitest::Test
       :d_key=>15
     }
 
-    assert_equal expected, @encryption.find_keys
+    assert_equal expected, @encryption.find_keys("02715")
   end
 
   def test_it_can_find_offsets
