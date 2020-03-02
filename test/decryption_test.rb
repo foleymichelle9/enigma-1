@@ -147,9 +147,9 @@ class DecryptionTest < Minitest::Test
       date: "040895"
     }
 
-    assert_equal expected, @decryption.decryption_hash_creation("keder ohulw")
-    assert_equal expected, @decryption.decryption_hash_creation("KEDER OHULW")
-    assert_equal sym_expected, @decryption.decryption_hash_creation("!hxeoo!tzojeg!")
+    assert_equal expected, @decryption.decryption_hash_creation("keder ohulw", "02715")
+    assert_equal expected, @decryption.decryption_hash_creation("KEDER OHULW", "02715")
+    assert_equal sym_expected, @decryption.decryption_hash_creation("!hxeoo!tzojeg!", "02715")
   end
 
   def test_it_can_decrypt_message_with_key_and_date
