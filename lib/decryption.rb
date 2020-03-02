@@ -23,8 +23,8 @@ class Decryption < Cipher
     slices
   end
 
-  def decryption_indices_in_alphabet_array(message, key)
-    subtract_shift_from_indices(message, key).map do |index|
+  def decryption_indices_in_alphabet_array(message, key, date)
+    subtract_shift_from_indices(message, key, date).map do |index|
       if index.is_a?(Numeric) && index < -26
         index % 27
       elsif index.is_a?(Numeric) && index > -26 && index.negative?
