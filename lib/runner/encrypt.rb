@@ -5,9 +5,9 @@ enigma = Enigma.new
 ARGV == ["message.txt", "encrypted.txt"]
 input = ARGV
 
-write_message = File.open('./lib/runner/message.txt', "w")
-write_message.write("hello world")
-write_message.close
+# write_message = File.open('./lib/runner/message.txt', "w")
+# write_message.write("hello world")
+# write_message.close
 
 read_message = File.open('./lib/runner/message.txt', "r")
 message = read_message.read
