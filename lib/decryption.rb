@@ -3,10 +3,9 @@ require_relative 'cipher'
 class Decryption < Cipher
 
   def decrypt(message, key, date = nil)
-    @message = message
     @key = key
     @date = date
-    decryption_hash_creation(@message)
+    decryption_hash_creation(message)
   end
 
   def subtract_shift_from_indices(message)
