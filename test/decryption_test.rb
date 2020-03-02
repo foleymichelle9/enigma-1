@@ -119,9 +119,9 @@ class DecryptionTest < Minitest::Test
     expected = [7, 4, 11, 11, 14, 26, 22, 14, 17, 11, 3]
     sym_expected = ["!", 10, 12, 10, 1, 17, "!", 6, 11, 7, 1, 18, 19, "!"]
 
-    assert_equal expected, @decryption.decryption_indices_in_alphabet_array("keder ohulw")
-    assert_equal expected, @decryption.decryption_indices_in_alphabet_array("KEDER OHULW")
-    assert_equal sym_expected, @decryption.decryption_indices_in_alphabet_array("!keder! ohulw!")
+    assert_equal expected, @decryption.decryption_indices_in_alphabet_array("keder ohulw", "02715")
+    assert_equal expected, @decryption.decryption_indices_in_alphabet_array("KEDER OHULW", "02715")
+    assert_equal sym_expected, @decryption.decryption_indices_in_alphabet_array("!keder! ohulw!", "02715")
   end
 
   def test_it_can_find_decrypted_letters
