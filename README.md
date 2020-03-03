@@ -58,4 +58,7 @@ ___
 
 This project in total has over 200 commits. All tests are committed before methods. No commit messages are ambiguous and none of then include multiple chunks of functionality. All pull requests are named appropriately and have the functionality created in that branch listed in the request.
 
-## Layout of files
+___
+### Layout of files
+
+![Ruby Encapsulation Enigma](https://user-images.githubusercontent.com/55028065/75744627-11382080-5cd2-11ea-9255-9ff76900479f.jpg "File Layout")
