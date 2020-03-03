@@ -1,5 +1,5 @@
 class Cipher
-  
+
   def alphabet
     ("a".."z").to_a << " "
   end
@@ -48,6 +48,9 @@ class Cipher
 
     indices = []
     characters.each do |character|
+      if !character[/\W/].nil? && character != " "
+        indices << character
+      end
       alphabet.each do |letter|
         if character == letter
           indices << alphabet.index(letter)
