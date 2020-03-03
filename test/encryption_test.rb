@@ -117,9 +117,9 @@ class EncryptionTest < Minitest::Test
 
   def test_it_can_find_encryted_letters
     Date.stubs(:today).returns(Date.new(1995, 8, 4))
-    assert_equal "keder ohulw", @encryption.find_encryted_letters("hello world", "02715")
-    assert_equal "keder ohulw", @encryption.find_encryted_letters("HELLO WORLD", "02715")
-    assert_equal "!hxeoo!tzojeg!", @encryption.find_encryted_letters("!HELLO! WORLD!", "02715")
+    assert_equal "keder ohulw", @encryption.find_encryted_letters("hello world", "02715", "040895")
+    assert_equal "keder ohulw", @encryption.find_encryted_letters("HELLO WORLD", "02715", "040895")
+    assert_equal "!hxeoo!tzojeg!", @encryption.find_encryted_letters("!HELLO! WORLD!", "02715", "040895")
   end
 
   def test_it_can_create_encryption_hash_creation
