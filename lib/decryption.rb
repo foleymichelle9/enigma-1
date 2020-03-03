@@ -27,7 +27,7 @@ class Decrypt < Cipher
     slices
   end
 
-  def decryption_indices_in_alphabet_array(message, key, date)
+  def decryption_indices_in_alphabet_range(message, key, date)
     subtract_shift_from_indices(message, key, date).map do |index|
       if index.is_a?(Numeric) && index < -26
         index % 27
@@ -39,11 +39,11 @@ class Decrypt < Cipher
     end
   end
 
-  def find_decrypted_letters(message, key, date)
-    find_letters(decryption_indices_in_alphabet_array(message, key, date))
+  def decrypted_letters(message, key, date)
+    find_letters(decryption_indices_in_alphabet_range(message, key, date))
   end
 
   def decryption_hash_creation(message, key, date)
-    hash_creation("decryption", find_decrypted_letters(message, key, date), key, date)
+    hash_creation("decryption", decrypted_letters(message, key, date), key, date)
   end
 end

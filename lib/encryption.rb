@@ -28,7 +28,7 @@ class Encrypt < Cipher
     slices
   end
 
-  def encryption_indices_in_alphabet_array(message, key, date)
+  def encryption_indices_in_alphabet_range(message, key, date)
     add_shift_to_indices(message, key, date).map do |index|
       if index.is_a?(Numeric) && index > 26
         index % 27
@@ -38,11 +38,11 @@ class Encrypt < Cipher
     end
   end
 
-  def find_encryted_letters(message, key, date)
-    find_letters(encryption_indices_in_alphabet_array(message, key, date))
+  def encryted_letters(message, key, date)
+    find_letters(encryption_indices_in_alphabet_range(message, key, date))
   end
 
   def encryption_hash_creation(message, key, date)
-    hash_creation("encryption", find_encryted_letters(message, key, date), key, date)
+    hash_creation("encryption", encryted_letters(message, key, date), key, date)
   end
 end

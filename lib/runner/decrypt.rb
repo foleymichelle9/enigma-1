@@ -15,4 +15,4 @@ write_decryption = File.open('./lib/runner/decrypted.txt', "w")
 write_decryption.write(decrypted_message[:decryption])
 write_decryption.close
 
-puts "Created #{decrypted_output} with the key #{key} and date #{date}"
+puts "Created #{decrypted_output} with the key #{key} and date #{date}."
