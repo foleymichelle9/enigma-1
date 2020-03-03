@@ -115,10 +115,10 @@ class EncryptionTest < Minitest::Test
     assert_equal sym_expected, @encryption.encryption_indices_in_alphabet_array("!HELLO! WORLD!", "02715", "040895")
   end
 
-  def test_it_can_find_encryted_letters
-    assert_equal "keder ohulw", @encryption.find_encryted_letters("hello world", "02715", "040895")
-    assert_equal "keder ohulw", @encryption.find_encryted_letters("HELLO WORLD", "02715", "040895")
-    assert_equal "!hxeoo!tzojeg!", @encryption.find_encryted_letters("!HELLO! WORLD!", "02715", "040895")
+  def test_it_can_encryted_letters
+    assert_equal "keder ohulw", @encryption.encryted_letters("hello world", "02715", "040895")
+    assert_equal "keder ohulw", @encryption.encryted_letters("HELLO WORLD", "02715", "040895")
+    assert_equal "!hxeoo!tzojeg!", @encryption.encryted_letters("!HELLO! WORLD!", "02715", "040895")
   end
 
   def test_it_can_create_encryption_hash_creation

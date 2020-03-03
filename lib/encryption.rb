@@ -34,11 +34,11 @@ class Encryption < Cipher
     end
   end
 
-  def find_encryted_letters(message, key, date)
+  def encryted_letters(message, key, date)
     find_letters(encryption_indices_in_alphabet_array(message, key, date))
   end
 
   def encryption_hash_creation(message, key, date)
-    hash_creation("encryption", find_encryted_letters(message, key, date), key, date)
+    hash_creation("encryption", encryted_letters(message, key, date), key, date)
   end
 end
