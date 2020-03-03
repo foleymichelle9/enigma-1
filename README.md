@@ -42,10 +42,10 @@ My `Enigma` Project was broken into 5 essential parts.
         - It then returns a message to the user telling them where to find their decrypted message along with the key and date used to decrypt it
 
 **More Things to Note**
-- The longest class in this project is the `Cipher` class at 69 lines.
-    - The shortest class is `Enigma` at 18 lines long.
+- The longest class in this project is the `Cipher` class at 69 lines
+    - The shortest class is `Enigma` at 18 lines long
 - All classes only contain information relating to themselves
-- All methods follow the SRP guidelines.
+- All methods follow the SRP guidelines
 
 ___
 ### Ruby Conventions and Mechanics
@@ -54,12 +54,12 @@ ___
 
 **Overview**
 
-- All classes and modules in this project are named for transparency.
-- The arguments given to any method are consistent throughout the project.
-- Child classes are named similar to their parent class to show their relation.
-- Code is properly indented and spaced throughout.
-- Some enumerable's are the correct tool for the job while I had to use `each` on some others.
-- There are several hashes implemented in this project.
+- All classes and modules in this project are named for transparency
+- The arguments given to any method are consistent throughout the project
+- Child classes are named similar to their parent class to show their relation
+- Code is properly indented and spaced throughout
+- Some enumerable's are the correct tool for the job while I had to use `each` on some others
+- There are several hashes implemented in this project
 
 ___
 ### Test Driven Development
@@ -67,8 +67,8 @@ ___
 *Score: 3.5*
 
 **Overview**
-- Every method in this project is tested with the exception of `generate_random_key`.
-- The testing coverage is at 99.15%.
+- Every method in this project is tested with the exception of `generate_random_key`
+- The testing coverage is at 99.15%
 - Most methods follow SRP guidelines
     - This allowed me to test every piece of logic in the code
 - Most edge cases are tested
@@ -86,7 +86,7 @@ ___
 - This project has over 250 commits in total
 - All tests were committed before methods
 - No commit messages are ambiguous
-    - None of them include multiple chunks of functionality.
+    - None of them include multiple chunks of functionality
 - All pull requests are named appropriately
     - Pull requests have the functionality created in that branch listed in the request
 
