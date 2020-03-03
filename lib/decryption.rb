@@ -1,6 +1,10 @@
 require_relative 'cipher'
 
+<<<<<<< HEAD:lib/decryption.rb
+class Decryption < Cipher
+=======
 class Decrypt < Cipher
+>>>>>>> master:lib/decrypt.rb
 
   def decrypt(message, key, date = nil)
     @message = message
