@@ -20,20 +20,17 @@ class Cipher
     five_random_digits.join.to_i
   end
 
-  def find_keys
-    @key = generate_random_key if @key.nil?
-
+  def find_keys(key)
     keys = {}
-    keys[:a_key] = @key.to_s[0..1].to_i
-    keys[:b_key] = @key.to_s[1..2].to_i
-    keys[:c_key] = @key.to_s[2..3].to_i
-    keys[:d_key] = @key.to_s[3..4].to_i
+    keys[:a_key] = key.to_s[0..1].to_i
+    keys[:b_key] = key.to_s[1..2].to_i
+    keys[:c_key] = key.to_s[2..3].to_i
+    keys[:d_key] = key.to_s[3..4].to_i
     keys
   end
 
-  def find_offsets
-    @date = Date.today.strftime('%d%m%y') if @date.nil?
-    date_squared = @date.to_i * @date.to_i
+  def find_offsets(date)
+    date_squared = date.to_i * date.to_i
     last_four = date_squared.to_s[-4..-1]
     last_four = last_four
 
@@ -45,12 +42,12 @@ class Cipher
     offsets
   end
 
-  def find_shifts
+  def find_shifts(key, date)
     shifts = {}
-    shifts[:a_shift] = find_offsets[:a_offset] + find_keys[:a_key]
-    shifts[:b_shift] = find_offsets[:b_offset] + find_keys[:b_key]
-    shifts[:c_shift] = find_offsets[:c_offset] + find_keys[:c_key]
-    shifts[:d_shift] = find_offsets[:d_offset] + find_keys[:d_key]
+    shifts[:a_shift] = find_offsets(date)[:a_offset] + find_keys(key)[:a_key]
+    shifts[:b_shift] = find_offsets(date)[:b_offset] + find_keys(key)[:b_key]
+    shifts[:c_shift] = find_offsets(date)[:c_offset] + find_keys(key)[:c_key]
+    shifts[:d_shift] = find_offsets(date)[:d_offset] + find_keys(key)[:d_key]
     shifts
   end
 

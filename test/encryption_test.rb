@@ -47,7 +47,6 @@ class EncryptionTest < Minitest::Test
   end
 
   def test_it_can_find_keys
-    @encryption.stubs(:generate_random_key).returns("02715")
     expected = {
       :a_key=>2,
       :b_key=>27,
@@ -55,11 +54,10 @@ class EncryptionTest < Minitest::Test
       :d_key=>15
     }
 
-    assert_equal expected, @encryption.find_keys
+    assert_equal expected, @encryption.find_keys("02715")
   end
 
   def test_it_can_find_offsets
-    Date.stubs(:today).returns(Date.new(1995, 8, 4))
     expected = {
       :a_offset=>1,
       :b_offset=>0,
@@ -67,12 +65,10 @@ class EncryptionTest < Minitest::Test
       :d_offset=>5
     }
 
-    assert_equal expected, @encryption.find_offsets
+    assert_equal expected, @encryption.find_offsets("040895")
   end
 
   def test_it_can_find_shifts
-    Date.stubs(:today).returns(Date.new(1995, 8, 4))
-    @encryption.stubs(:generate_random_key).returns("02715")
     expected = {
       :a_shift=>3,
       :b_shift=>27,
@@ -80,7 +76,7 @@ class EncryptionTest < Minitest::Test
       :d_shift=>20
     }
 
-    assert_equal expected, @encryption.find_shifts
+    assert_equal expected, @encryption.find_shifts("02715", "040895")
   end
 
   def test_it_can_find_message_indices
@@ -102,39 +98,30 @@ class EncryptionTest < Minitest::Test
   end
 
   def test_it_can_add_shift_to_indices
-    Date.stubs(:today).returns(Date.new(1995, 8, 4))
-    @encryption.stubs(:generate_random_key).returns("02715")
     expected = [10, 31, 84, 31, 17, 53, 95, 34, 20, 38, 76]
     sym_expected = ["!", 34, 77, 31, 14, 41, "!", 46, 25, 41, 90, 31, 6, "!"]
 
-    assert_equal expected, @encryption.add_shift_to_indices("hello world")
-    assert_equal expected, @encryption.add_shift_to_indices("HELLO WORLD")
-    assert_equal sym_expected, @encryption.add_shift_to_indices("!HELLO! WORLD!")
+    assert_equal expected, @encryption.add_shift_to_indices("hello world", "02715", "040895")
+    assert_equal expected, @encryption.add_shift_to_indices("HELLO WORLD", "02715", "040895")
+    assert_equal sym_expected, @encryption.add_shift_to_indices("!HELLO! WORLD!", "02715", "040895")
   end
 
   def test_it_can_find_encryption_indices_in_alphabet_array_range
-    Date.stubs(:today).returns(Date.new(1995, 8, 4))
-    @encryption.stubs(:generate_random_key).returns("02715")
     expected = [10, 4, 3, 4, 17, 26, 14, 7, 20, 11, 22]
     sym_expected = ["!", 7, 23, 4, 14, 14, "!", 19, 25, 14, 9, 4, 6, "!"]
 
-    assert_equal expected, @encryption.encryption_indices_in_alphabet_array("hello world")
-    assert_equal expected, @encryption.encryption_indices_in_alphabet_array("HELLO WORLD")
-    assert_equal sym_expected, @encryption.encryption_indices_in_alphabet_array("!HELLO! WORLD!")
+    assert_equal expected, @encryption.encryption_indices_in_alphabet_array("hello world", "02715", "040895")
+    assert_equal expected, @encryption.encryption_indices_in_alphabet_array("HELLO WORLD", "02715", "040895")
+    assert_equal sym_expected, @encryption.encryption_indices_in_alphabet_array("!HELLO! WORLD!", "02715", "040895")
   end
 
   def test_it_can_find_encryted_letters
-    Date.stubs(:today).returns(Date.new(1995, 8, 4))
-    @encryption.stubs(:generate_random_key).returns("02715")
-
-    assert_equal "keder ohulw", @encryption.find_encryted_letters("hello world")
-    assert_equal "keder ohulw", @encryption.find_encryted_letters("HELLO WORLD")
-    assert_equal "!hxeoo!tzojeg!", @encryption.find_encryted_letters("!HELLO! WORLD!")
+    assert_equal "keder ohulw", @encryption.find_encryted_letters("hello world", "02715", "040895")
+    assert_equal "keder ohulw", @encryption.find_encryted_letters("HELLO WORLD", "02715", "040895")
+    assert_equal "!hxeoo!tzojeg!", @encryption.find_encryted_letters("!HELLO! WORLD!", "02715", "040895")
   end
 
   def test_it_can_create_encryption_hash_creation
-    Date.stubs(:today).returns(Date.new(1995, 8, 4))
-    @encryption.stubs(:generate_random_key).returns("02715")
     expected = {
       :encryption=>"keder ohulw",
       :key=>"02715",
@@ -146,9 +133,9 @@ class EncryptionTest < Minitest::Test
       :date=>"040895"
     }
 
-    assert_equal expected, @encryption.encryption_hash_creation("hello world")
-    assert_equal expected, @encryption.encryption_hash_creation("HELLO WORLD")
-    assert_equal sym_expected, @encryption.encryption_hash_creation("!HELLO! WORLD!")
+    assert_equal expected, @encryption.encryption_hash_creation("hello world", "02715", "040895")
+    assert_equal expected, @encryption.encryption_hash_creation("HELLO WORLD", "02715", "040895")
+    assert_equal sym_expected, @encryption.encryption_hash_creation("!HELLO! WORLD!", "02715", "040895")
   end
 
   def test_test_it_can_encrypt_message_with_key_and_date
