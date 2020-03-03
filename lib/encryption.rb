@@ -5,7 +5,7 @@ class Encryption < Cipher
   def encrypt(message, key = nil, date = nil)
     key = generate_random_key if key.nil?
     date = Date.today.strftime('%d%m%y') if date.nil?
-    encryption_hash_creation(message, key)
+    encryption_hash_creation(message, key, date)
   end
 
   def add_shift_to_indices(message, key, date)
