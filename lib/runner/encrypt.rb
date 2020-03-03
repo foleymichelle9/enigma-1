@@ -15,4 +15,4 @@ write_encryption.close
 
 File.open('./lib/runner/encrypted.txt', "r")
 
-puts "Created #{input[1]} with the key #{encrypted_message[:key]} and date #{encrypted_message[:date]}"
+puts "Created #{input[1]} with the key #{encrypted_message[:key]} and date #{encrypted_message[:date]}."
