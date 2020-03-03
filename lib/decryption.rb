@@ -40,6 +40,6 @@ class Decryption < Cipher
   end
 
   def decryption_hash_creation(message, key, date)
-    hash_creation("decryption", find_decrypted_letters(message, key, date), key)
+    hash_creation("decryption", find_decrypted_letters(message, key, date), key, date)
   end
 end
