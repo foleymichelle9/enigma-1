@@ -153,7 +153,7 @@ class DecryptionTest < Minitest::Test
 
     assert_equal expected, @decryption.decrypt("keder ohulw", "02715", "040895")
     assert_equal expected, @decryption.decrypt("KEDER OHULW", "02715", "040895")
-    assert_equal sym_expected, @decryption.decrypt(("!hxeoo!tzojeg!"), "02715", "040895")
+    assert_equal sym_expected, @decryption.decrypt("!hxeoo!tzojeg!", "02715", "040895")
   end
 
   def test_it_can_decrypt_message_with_key
