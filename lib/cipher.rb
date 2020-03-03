@@ -1,6 +1,11 @@
+<<<<<<< HEAD
 require_relative "./module/searchable"
 require_relative "./module/hashable"
 require 'date'
+=======
+require "./lib/module/searchable"
+require "./lib/module/hashable"
+>>>>>>> master
 
 class Cipher
   include Searchable
