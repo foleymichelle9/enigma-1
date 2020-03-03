@@ -36,23 +36,10 @@ class Encrypt < Cipher
   end
 
   def find_encryted_letters(message)
-    letters = []
-
-    encryption_indices_in_alphabet_array(message).each do |index|
-      if index.is_a?(Numeric)
-        letters << alphabet[index]
-      elsif !index.is_a?(Numeric)
-        letters << index
-      end
-    end
-    letters.join
+    find_letters(encryption_indices_in_alphabet_array(message))
   end
 
   def encryption_hash_creation(message)
-    encryption_hash = {}
-    encryption_hash[:encryption] = find_encryted_letters(message)
-    encryption_hash[:key] = @key
-    encryption_hash[:date] = @date
-    encryption_hash
+    hash_creation("encryption", find_encryted_letters(message))
   end
 end
