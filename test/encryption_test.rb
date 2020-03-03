@@ -58,7 +58,6 @@ class EncryptionTest < Minitest::Test
   end
 
   def test_it_can_find_offsets
-    date = Date.stubs(:today).returns(Date.new(1995, 8, 4))
     expected = {
       :a_offset=>1,
       :b_offset=>0,
@@ -66,11 +65,10 @@ class EncryptionTest < Minitest::Test
       :d_offset=>5
     }
 
-    assert_equal expected, @encryption.find_offsets(date)
+    assert_equal expected, @encryption.find_offsets("040895")
   end
 
   def test_it_can_find_shifts
-    date = Date.stubs(:today).returns(Date.new(1995, 8, 4))
     expected = {
       :a_shift=>3,
       :b_shift=>27,
@@ -78,7 +76,7 @@ class EncryptionTest < Minitest::Test
       :d_shift=>20
     }
 
-    assert_equal expected, @encryption.find_shifts("02715", date)
+    assert_equal expected, @encryption.find_shifts("02715", "040895")
   end
 
   def test_it_can_find_message_indices
@@ -100,13 +98,12 @@ class EncryptionTest < Minitest::Test
   end
 
   def test_it_can_add_shift_to_indices
-    date = Date.stubs(:today).returns(Date.new(1995, 8, 4))
     expected = [10, 31, 84, 31, 17, 53, 95, 34, 20, 38, 76]
     sym_expected = ["!", 34, 77, 31, 14, 41, "!", 46, 25, 41, 90, 31, 6, "!"]
 
-    assert_equal expected, @encryption.add_shift_to_indices("hello world", "02715", date)
-    assert_equal expected, @encryption.add_shift_to_indices("HELLO WORLD", "02715", date)
-    assert_equal sym_expected, @encryption.add_shift_to_indices("!HELLO! WORLD!", "02715", date)
+    assert_equal expected, @encryption.add_shift_to_indices("hello world", "02715", "040895")
+    assert_equal expected, @encryption.add_shift_to_indices("HELLO WORLD", "02715", "040895")
+    assert_equal sym_expected, @encryption.add_shift_to_indices("!HELLO! WORLD!", "02715", "040895")
   end
 
   def test_it_can_find_encryption_indices_in_alphabet_array_range
