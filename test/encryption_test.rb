@@ -106,13 +106,13 @@ class EncryptionTest < Minitest::Test
     assert_equal sym_expected, @encryption.add_shift_to_indices("!HELLO! WORLD!", "02715", "040895")
   end
 
-  def test_it_can_find_encryption_indices_in_alphabet_array_range
+  def test_it_can_find_encryption_indices_in_alphabet_range
     expected = [10, 4, 3, 4, 17, 26, 14, 7, 20, 11, 22]
     sym_expected = ["!", 7, 23, 4, 14, 14, "!", 19, 25, 14, 9, 4, 6, "!"]
 
-    assert_equal expected, @encryption.encryption_indices_in_alphabet_array("hello world", "02715", "040895")
-    assert_equal expected, @encryption.encryption_indices_in_alphabet_array("HELLO WORLD", "02715", "040895")
-    assert_equal sym_expected, @encryption.encryption_indices_in_alphabet_array("!HELLO! WORLD!", "02715", "040895")
+    assert_equal expected, @encryption.encryption_indices_in_alphabet_range("hello world", "02715", "040895")
+    assert_equal expected, @encryption.encryption_indices_in_alphabet_range("HELLO WORLD", "02715", "040895")
+    assert_equal sym_expected, @encryption.encryption_indices_in_alphabet_range("!HELLO! WORLD!", "02715", "040895")
   end
 
   def test_it_can_encryted_letters
