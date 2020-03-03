@@ -4,7 +4,7 @@ class Decryption < Cipher
 
   def decrypt(message, key, date = nil)
     date = Date.today.strftime('%d%m%y') if date.nil?
-    decryption_hash_creation(message, key)
+    decryption_hash_creation(message, key, date)
   end
 
   def subtract_shift_from_indices(message, key, date)
