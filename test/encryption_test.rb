@@ -116,14 +116,12 @@ class EncryptionTest < Minitest::Test
   end
 
   def test_it_can_find_encryted_letters
-    Date.stubs(:today).returns(Date.new(1995, 8, 4))
     assert_equal "keder ohulw", @encryption.find_encryted_letters("hello world", "02715", "040895")
     assert_equal "keder ohulw", @encryption.find_encryted_letters("HELLO WORLD", "02715", "040895")
     assert_equal "!hxeoo!tzojeg!", @encryption.find_encryted_letters("!HELLO! WORLD!", "02715", "040895")
   end
 
   def test_it_can_create_encryption_hash_creation
-    Date.stubs(:today).returns(Date.new(1995, 8, 4))
     expected = {
       :encryption=>"keder ohulw",
       :key=>"02715",
@@ -135,9 +133,9 @@ class EncryptionTest < Minitest::Test
       :date=>"040895"
     }
 
-    assert_equal expected, @encryption.encryption_hash_creation("hello world", "02715")
-    assert_equal expected, @encryption.encryption_hash_creation("HELLO WORLD", "02715")
-    assert_equal sym_expected, @encryption.encryption_hash_creation("!HELLO! WORLD!", "02715")
+    assert_equal expected, @encryption.encryption_hash_creation("hello world", "02715", "040895")
+    assert_equal expected, @encryption.encryption_hash_creation("HELLO WORLD", "02715", "040895")
+    assert_equal sym_expected, @encryption.encryption_hash_creation("!HELLO! WORLD!", "02715", "040895")
   end
 
   def test_test_it_can_encrypt_message_with_key_and_date
