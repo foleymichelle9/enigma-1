@@ -34,8 +34,8 @@ class Encryption < Cipher
     end
   end
 
-  def find_encryted_letters(message, key)
-    find_letters(encryption_indices_in_alphabet_array(message, key))
+  def find_encryted_letters(message, key, date)
+    find_letters(encryption_indices_in_alphabet_array(message, key, date))
   end
 
   def encryption_hash_creation(message, key)
