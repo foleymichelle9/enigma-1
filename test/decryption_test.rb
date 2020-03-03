@@ -116,10 +116,10 @@ class DecryptionTest < Minitest::Test
     assert_equal sym_expected, @decryption.decryption_indices_in_alphabet_array("!keder! ohulw!", "02715", "040895")
   end
 
-  def test_it_can_find_decrypted_letters
-    assert_equal "hello world", @decryption.find_decrypted_letters("keder ohulw", "02715", "040895")
-    assert_equal "hello world", @decryption.find_decrypted_letters("KEDER OHULW", "02715", "040895")
-    assert_equal "!hello! world!", @decryption.find_decrypted_letters("!hxeoo!tzojeg!", "02715", "040895")
+  def test_it_can_decrypted_letters
+    assert_equal "hello world", @decryption.decrypted_letters("keder ohulw", "02715", "040895")
+    assert_equal "hello world", @decryption.decrypted_letters("KEDER OHULW", "02715", "040895")
+    assert_equal "!hello! world!", @decryption.decrypted_letters("!hxeoo!tzojeg!", "02715", "040895")
   end
 
   def test_it_can_get_decryption_hash_creation
