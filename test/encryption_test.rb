@@ -107,13 +107,12 @@ class EncryptionTest < Minitest::Test
   end
 
   def test_it_can_find_encryption_indices_in_alphabet_array_range
-    Date.stubs(:today).returns(Date.new(1995, 8, 4))
     expected = [10, 4, 3, 4, 17, 26, 14, 7, 20, 11, 22]
     sym_expected = ["!", 7, 23, 4, 14, 14, "!", 19, 25, 14, 9, 4, 6, "!"]
 
-    assert_equal expected, @encryption.encryption_indices_in_alphabet_array("hello world", "02715")
-    assert_equal expected, @encryption.encryption_indices_in_alphabet_array("HELLO WORLD", "02715")
-    assert_equal sym_expected, @encryption.encryption_indices_in_alphabet_array("!HELLO! WORLD!", "02715")
+    assert_equal expected, @encryption.encryption_indices_in_alphabet_array("hello world", "02715", "040895")
+    assert_equal expected, @encryption.encryption_indices_in_alphabet_array("HELLO WORLD", "02715", "040895")
+    assert_equal sym_expected, @encryption.encryption_indices_in_alphabet_array("!HELLO! WORLD!", "02715", "040895")
   end
 
   def test_it_can_find_encryted_letters
